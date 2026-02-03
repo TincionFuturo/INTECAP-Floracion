@@ -31,32 +31,22 @@ function evaluatePixel(s){return [s.SCENECLASSIFICATION];}`;
 
 // ====== TOKEN (Netlify/Vercel function) ======
 async function getAuthToken() {
-  // Usa caché si sigue válido
-  if (window.cachedToken) return window.cachedToken;
+    try {
+        // En lugar de ir a Copernicus, vamos a NUESTRA propia API que creamos
+        // Vercel redirige esto automáticamente al archivo api/get-sentinel-token.js
+        const response = await fetch('/api/get-sentinel-token');
 
-  // OPCIÓN A: Si actualizas tu backend, usa la ruta de siempre.
-  // OPCIÓN B: Para pruebas rápidas (CDSE), puedes usar credenciales directas aquí (¡Cuidado! No exponer en prod).
-  // Regístrate en: https://dataspace.copernicus.eu/
-  const CDSE_CLIENT_ID = 'sh-e0012b65-b70f-49b1-8cbf-b91e09390a57'; // Pon tu ID aquí si quieres probar directo
-  const CDSE_CLIENT_SECRET = 'bn67L8mXm80vA0gZGe3i4rPJ3anLRLeg'; // Pon tu Secret aquí
+        if (!response.ok) {
+            throw new Error(`Error obteniendo token: ${response.status}`);
+        }
 
-  if (CDSE_CLIENT_ID && CDSE_CLIENT_SECRET) {
-    const body = new URLSearchParams({
-      grant_type: 'client_credentials',
-      client_id: CDSE_CLIENT_ID,
-      client_secret: CDSE_CLIENT_SECRET
-    });
-    const res = await fetch('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body
-    });
-    if (!res.ok) throw new Error(`Error Auth CDSE: ${res.status}`);
-    const data = await res.json();
-    window.cachedToken = data.access_token;
-    setTimeout(() => { window.cachedToken = null; }, (data.expires_in - 30) * 1000);
-    return data.access_token;
-  }
+        const data = await response.json();
+        return data.access_token; // Retornamos el token limpio
+    } catch (error) {
+        console.error("Error en getAuthToken:", error);
+        return null;
+    }
+}
 
   // Endpoint de tu función serverless (ajústalo si usas otra ruta)
   const endpoints = [
