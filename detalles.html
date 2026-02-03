@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BloomWatch | Detalles del Terreno</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://tse2.mm.bing.net/th/id/OIP.1ys9Q6-YKGoyT6ITG1_AJwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" />
+
+  <link rel="stylesheet" href="Diseño.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="detalles-body">
+  <header class="topbar">
+    <div class="logo">BloomWatch</div>
+    <nav>
+      <a href="index.html#inicio">Inicio</a>
+      <a href="index.html#info">Aprende</a>
+      <a href="index.html#mapa">Mapa Interactivo</a>
+      <a href="historial.html">Historial</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Detalles del Terreno</h1>
+
+    <section class="card" id="summary-card">
+      <h3 id="analysis-title">Análisis</h3>
+      <p><strong>Área Analizada:</strong> <span id="area-ha">–</span> hectáreas</p>
+      <div id="no-data" class="muted" style="display:none;">No se encontraron datos de índices para el período seleccionado.</div>
+
+      <div class="metrics-grid">
+        <div class="metric"><div class="metric-label">NDVI</div><div class="metric-value" id="m-ndvi">–</div></div>
+        <div class="metric"><div class="metric-label">NDWI</div><div class="metric-value" id="m-ndwi">–</div></div>
+        <div class="metric"><div class="metric-label">NDRE</div><div class="metric-value" id="m-ndre">–</div></div>
+        <div class="metric"><div class="metric-label">FPI* (exp.)</div><div class="metric-value" id="m-fpi">–</div></div>
+        <div class="metric"><div class="metric-label">% Nubes</div><div class="metric-value" id="m-cloud">–</div></div>
+      </div>
+      <div class="metric-footnote muted">*FPI (experimental): heurística basada en NDVI y NDWI para destacar vigor floral.</div>
+    </section>
+
+    <section class="chart-container">
+      <h3>Serie Temporal</h3>
+      <canvas id="indicesChart" height="120"></canvas>
+    </section>
+  </main>
+
+  <footer><p>© Desarrollado por participantes de INTECAP CSL 2025.</p></footer>
+
+  <script src="detalles.js?v=2"></script>
+</body>
+</html>

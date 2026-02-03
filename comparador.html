@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Análisis - EarthBloom</title>
+    <link rel="stylesheet" href="Diseño.css">
+    <style>
+        /* Estilos específicos para la página de comparación */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem 5%;
+        }
+        .analysis-column {
+            background-color: var(--primary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        .analysis-column h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            min-height: 50px; /* Para alinear títulos */
+        }
+        .comparison-chart-container {
+            margin-top: 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        .back-button {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>BloomWatch</h1>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="historial.html">Volver al Historial</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="comparador">
+            <h2>Comparación de Zonas</h2>
+            <div class="comparison-container" id="comparison-results">
+                <!-- Las dos columnas de análisis se cargarán aquí -->
+            </div>
+            <div class="comparison-chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+            <a href="historial.html" class="cta-button back-button">Volver al Historial</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Un proyecto para el NASA Space Apps Challenge 2025.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="comparador.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BloomWatch - Monitoreo de Floración Global</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://tse2.mm.bing.net/th/id/OIP.1ys9Q6-YKGoyT6ITG1_AJwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="Diseño.css">
+</head>
+<body>
+  <!-- Fondo -->
+  <div class="background-container">
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+  </div>
+
+  <div id="page-container">
+    <header>
+      <nav>
+        <h1>EartBloom</h1>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#info">Aprende</a></li>
+          <li><a href="#mapa">Mapa Interactivo</a></li>
+          <li><a href="#misiones">Misiones</a></li>
+          <li><a href="#herramientas">Herramientas</a></li>
+          <li><a href="historial.html">Historial</a></li>
+        </ul>
+        <img src="https://tse2.mm.bing.net/th/id/OIP.1ys9Q6-YKGoyT6ITG1_AJwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Logo Intecap" class="header-logo">
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio">
+        <div class="hero-scene">
+          <div class="globe-container">
+            <div class="globe">
+              <div class="satellite-orbit">
+                <div class="satellite">
+                  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="25" width="20" height="50" rx="3" fill="var(--secondary-blue)"/>
+                    <rect x="70" y="25" width="20" height="50" rx="3" fill="var(--secondary-blue)"/>
+                    <rect x="40" y="40" width="20" height="20" fill="#E0E0E0"/>
+                    <path d="M45 60 C 50 70, 55 70, 60 60" stroke="var(--accent-pink)" stroke-width="4" fill="none"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-text">
+            <h2>Observando el florecer del mundo desde el espacio</h2>
+            <p class="hero-subtitle">Descubre cómo los satélites nos ayudan a entender la fenología de la floración de las plantas a nivel global.</p>
+            <a href="#mapa" class="cta-button">Explora el Mapa</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="info">
+        <h2>¿Qué es la Fenología y el NDVI?</h2>
+        <div class="card">
+          <h3>Fenología Vegetal</h3>
+          <p>Es la ciencia que estudia los ciclos de vida de las plantas y cómo se ven afectados por el clima...</p>
+          <br>
+          <h3>Índices de Vegetación</h3>
+          <ul>
+            <li><strong>NDVI:</strong> Mide el verdor y la salud general de la vegetación.</li>
+            <li><strong>NDWI:</strong> Detecta la cantidad de agua en el follaje.</li>
+            <li><strong>NDRE:</strong> Relacionado con estrés/nitrógeno.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="mapa">
+        <h2>Mapa Interactivo de Floración Global</h2>
+        <div id="map-container"></div>
+      </section>
+
+      <section id="misiones">
+        <h2>Misiones de Descubrimiento</h2>
+        <div class="card-grid">
+          <div class="card mission-card">
+            <h4 id="mission-1-title">Cargando misión...</h4>
+            <p id="mission-1-desc">Las misiones diarias se están generando. Por favor, espera.</p>
+            <button id="mission-1-btn" class="mission-btn" data-lat="0" data-lng="0">Ir a la Zona</button>
+          </div>
+          <div class="card mission-card">
+            <h4 id="mission-2-title">Cargando misión...</h4>
+            <p id="mission-2-desc">Las misiones diarias se están generando. Por favor, espera.</p>
+            <button id="mission-2-btn" class="mission-btn" data-lat="0" data-lng="0">Ir a la Zona</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="herramientas">
+        <h2>Caja de Herramientas</h2>
+        <div class="card-grid">
+          <div class="card tool-card">
+            <h4>Calculadora de Área</h4>
+            <p>Dibuja un polígono o rectángulo para ver su área en hectáreas.</p>
+          </div>
+          <div class="card tool-card">
+            <h4>Marcadores de Interés</h4>
+            <p>Guarda puntos clave y revísalos en el historial.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; Desarrollado por participantes de INTECAP CSL 2025.</p>
+    </footer>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+
+  <!-- App -->
+  <script src="evalscripts.js?v=2"></script>
+  <script src="sentinel.js?v=2"></script>
+  <script src="Funciones.js?v=2"></script>
+</body>
+</html>

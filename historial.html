@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BloomWatch | Historial</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://tse2.mm.bing.net/th/id/OIP.1ys9Q6-YKGoyT6ITG1_AJwHaHa?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" />
+
+  <link rel="stylesheet" href="Diseño.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">BloomWatch</div>
+    <nav>
+      <a href="index.html#inicio">Inicio</a>
+      <a href="index.html#info">Aprende</a>
+      <a href="index.html#mapa">Mapa Interactivo</a>
+      <a href="historial.html">Historial</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Historial de Análisis</h1>
+
+    <div class="toolbar">
+      <input type="text" id="searchBox" placeholder="Filtrar por fecha o etiqueta…"/>
+      <button class="btn" id="clearAll" style="display:none;">Vaciar historial</button>
+      <span style="flex:1"></span>
+      <button id="export-csv-btn" class="cta-button secondary">Exportar a CSV</button>
+      <button id="compare-btn" class="cta-button" disabled>Comparar Seleccionados (0/2)</button>
+    </div>
+
+    <div id="history-list" class="history-list"></div>
+
+    <div id="empty-history-msg" class="empty" style="display:none;">
+      Aún no tienes análisis guardados. Ve al <a href="index.html#mapa">mapa</a> y dibuja un polígono.
+    </div>
+  </main>
+
+  <script src="historial.js?v=2"></script>
+  <script src="//code.tidio.co/axvzqlpkh1fwivecrzpsvzr0hwktpjit.js" async></script>
+</body>
+</html>
