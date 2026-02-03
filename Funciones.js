@@ -239,9 +239,12 @@ function evaluatePixel(s){return [s.SCENECLASSIFICATION];}
         },
         data: [
           {
-            // Nota: para Sentinel Hub Process API, WorldCover suele exponerse como colección "ESA_WORLDCOVER_10M_2021_V2" (o similar),
-            // pero algunos tenants permiten el alias "esa-worldcover". Si te da 400, revisa el "type" correcto según tu cuenta.
-            type: "esa-worldcover"
+            // CAMBIO AQUÍ: Usamos S2L2A porque contiene la banda SCENECLASSIFICATION (SCL)
+            type: "S2L2A",
+            dataFilter: {
+                timeRange: { from: "2024-01-01T00:00:00Z", to: new Date().toISOString() },
+                mosaickingOrder: "mostRecent"
+            }
           }
         ]
       },
@@ -275,7 +278,7 @@ function evaluatePixel(s){return [s.SCENECLASSIFICATION];}
     }
 
     // Recibes un TIFF binario; aquí solo retornamos un marcador hasta que implementes la interpretación.
-    console.log("Respuesta de Land Cover recibida (TIFF). Falta implementar su interpretación para estadísticas/clases.");
+    console.log("Respuesta de Land Cover recibida (TIFF).");
     return { landCover: "Datos recibidos (TIFF), pendiente de procesar." };
   }
 
